@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SentenceBuilder.Data;
 
 namespace SentenceBuilder.Controllers
@@ -13,19 +14,19 @@ namespace SentenceBuilder.Controllers
             _context = context;
         }
 
-        // [HttpGet]
-        // public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
-        // {
-        //     var users = await _context.Users.ToListAsync();
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+        {
+            var users = await _context.Users.ToListAsync();
 
-        //     return users;
-        // }
+            return users;
+        }
 
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<AppUser>> GetUser(int id)
-        // {
-        //     return await _context.Users.FindAsync(id); // has to be the primary key to use Find
-        // }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<AppUser>> GetUser(int id)
+        {
+            return await _context.Users.FindAsync(id); // has to be the primary key to use Find
+        }
 
     }
 }
